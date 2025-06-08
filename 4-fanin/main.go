@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"math/rand"
 	"time"
 )
 
@@ -54,7 +55,7 @@ func boring(ctx context.Context, msg string) <-chan string {
 			case <-ctx.Done():
 				return
 			case boring_channel <- fmt.Sprintf("Hi, from boring func %s %d", msg, i):
-				time.Sleep(time.Second)
+				time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 			}
 
 			// time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)

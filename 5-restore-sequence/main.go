@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"time"
 )
 
@@ -11,17 +12,24 @@ type Message struct {
 }
 
 func main() {
-	c := fanIn(boring("Dafi"), boring("Zora"), boring("Ahn"))
+	c := fanIn(
+		boring("Dafi"),
+		boring("Zora"),
+		boring("Ahn"))
 
 	for i := 0; i < 25; i++ {
 		msg1 := <-c
-		fmt.Println("Msg One: ", msg1)
+		fmt.Println("Msg One: ", msg1.str)
 
-		msg2 := <-c
-		fmt.Println("Msg Two: ", msg2)
+		// msg2 := <-c
+		// fmt.Println("Msg Two: ", msg2.str)
+
+		// msg3 := <-c
+		// fmt.Println("Msg Three: ", msg3.str)
 
 		msg1.wait <- true
-		msg2.wait <- true
+		// msg2.wait <- true
+		// msg3.wait <- true
 	}
 
 	fmt.Println("You both are awesome. But I have to leave now.")
@@ -53,7 +61,7 @@ func boring(msg string) <-chan Message {
 				str:  fmt.Sprintf("Hi, from boring func %s %d", msg, i),
 				wait: waitForIt,
 			}
-			time.Sleep(time.Second)
+			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 			<-waitForIt // Wait for the main goroutine to signal that it has processed the message
 		}
 	}()
