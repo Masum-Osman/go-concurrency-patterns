@@ -1,4 +1,4 @@
-### Practical Use Cases for Mixed Sequence Fan-In Pattern
+## Practical Use Cases for Mixed Sequence Fan-In Pattern
 
 #### 1. **Live Streaming with Chat Integration**
 
