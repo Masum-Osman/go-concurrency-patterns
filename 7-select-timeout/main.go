@@ -7,13 +7,13 @@ import (
 )
 
 func main() {
-	c := boring("John")
+	channelReceiver := boring("John")
 
 	timeout := time.After(2 * time.Second)
 
 	for {
 		select {
-		case s := <-c:
+		case s := <-channelReceiver:
 			fmt.Println(s)
 
 		case <-timeout:
