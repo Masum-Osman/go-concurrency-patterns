@@ -4,7 +4,7 @@ This repository contains practical examples of Go concurrency patterns, demonstr
 
 ## Credits and Inspiration
 
-This repository is an expanded and detailed version of the patterns found in <mcurl name="lotusirous/go-concurrency-patterns" url="https://github.com/lotusirous/go-concurrency-patterns.git"></mcurl>. While the original repository provides excellent base examples, this version adds:
+This repository is an expanded and detailed version of the patterns found in [This Repo](https://github.com/lotusirous/go-concurrency-patterns). While the original repository provides excellent base examples, this version adds:
 - Detailed documentation for each pattern
 - Extended real-world use cases
 - Comprehensive explanations
